@@ -419,7 +419,8 @@ return function(Vargs, env)
 				assert(args[1], "Missing message")
 				for _, v in service.GetPlayers() do
 					Remote.RemoveGui(v, "Notify")
-					Functions.Notify(Settings.SystemTitle, service.Filter(args[1], plr, v), {v})
+					--Functions.Notify(Settings.SystemTitle, service.Filter(args[1], plr, v), {v})
+					Functions.Notify(Settings.SystemTitle, nil, {v})
 				end
 			end
 		};
