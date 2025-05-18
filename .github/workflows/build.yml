@@ -79,7 +79,7 @@ jobs:
         if: github.repository == 'TLGYmc/Adonis' && github.event_name == 'push' && github.ref_name == 'master'
         with:
           url: "https://apis.roblox.com/assets/v1/assets/${{ secrets.NIGHTLY_MODULE_ID }}"
-          method: "PATCH"
+          method: "POST"
           contentType: "multipart/form-data"
           files: '{ "file": "module.rbxm" }'
           customHeaders: '{ "x-api-key": "${{ secrets.PUBURL2_SECRET }}" }'
