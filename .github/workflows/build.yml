@@ -68,8 +68,7 @@ jobs:
         if: github.repository == 'TLGYmc/Adonis' && github.event_name == 'push' && github.ref_name == 'master'
         run: |
           rojo build -o module.rbxm .github/module.deploy.project.json
-          ls -la  # List files in the current directory to verify the output file
-
+          ls -la
       - name: Send file nightly build to Discord channel
         uses: tsickert/discord-webhook@v7.0.0
         if: github.repository == 'TLGYmc/Adonis' && github.event_name == 'push' && github.ref_name == 'master'
@@ -84,7 +83,7 @@ jobs:
           url: "https://apis.roblox.com/assets/v1/assets/${{ secrets.NIGHTLY_MODULE_ID }}"
           method: "PATCH"
           contentType: "multipart/form-data"
-          files: '{ "fileContent": "@\"module.rbxm\"" }'
+          files: '{ "fileContent": "@module.rbxm" }'
           customHeaders: '{ "x-api-key": "${{ secrets.PUBURL2_SECRET }}"}'
           data: '{ "request": "{\"assetId\": ${{ secrets.NIGHTLY_MODULE_ID }} }" }'
           timeout: 10000
