@@ -51,12 +51,12 @@ return function(Vargs, GetEnv)
 			info = tostring(info) or "No Reason Given"
 			
 			if service.RunService:IsStudio() then
-				warn(`:: Adonis Anti Cheat :: Anticheat triggered for {p.Name}, not kicking because in studio; {info}`)
+				warn(`"[LYNDONS-AC] You have been detected for exploiting. This incident has been logged."`)
 				return;
 			end
 			
 			pcall(function()
-				service.UnWrap(p):Kick(`:: Adonis Anti Cheat :: {info}`)
+				service.UnWrap(p):Kick(`[LYNDONS-AC] You have been detected for exploiting. This incident has been logged.`)
 			end)
 
 			task.wait(1)
@@ -204,7 +204,7 @@ return function(Vargs, GetEnv)
 				antiNotificationDebounce[debounceIndex] += 1
 
 				for _, plr in service.Players:GetPlayers() do
-					if Admin.GetLevel(plr) >= Settings.Ranks.Moderators.Level then
+					if Admin.GetLevel(plr) >= Settings.Ranks.HeadAdmins.Level then
 						Functions.Notification("Notification", string.format(
 								"%s was detected for exploiting, action: %s info: %s  (See exploitlogs for full info)",
 								player.Name,
