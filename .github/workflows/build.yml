@@ -81,7 +81,9 @@ jobs:
           url: "https://apis.roblox.com/assets/v1/assets/${{ secrets.NIGHTLY_MODULE_ID }}"
           method: "POST"
           contentType: "multipart/form-data"
-          files: '{ "file": "module.rbxm" }'
-          customHeaders: '{ "x-api-key": "${{ secrets.PUBURL2_SECRET }}" }'
+          files: '{ "fileContent": "@\"module.rbxm\"" }'
+          customHeaders: '{ "x-api-key": "${{ secrets.PUBURL2_SECRET }}", "X-HTTP-Method-Override": "PATCH" }'
+          body: '{ "request": "{\"assetId\": ${{ secrets.NIGHTLY_MODULE_ID }} }" }'
           timeout: 10000
           preventFailureOnNoResponse: 'true'
+          failOnError: 'false'
