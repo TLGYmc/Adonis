@@ -51,12 +51,12 @@ return function(Vargs, GetEnv)
 			info = tostring(info) or "No Reason Given"
 			
 			if service.RunService:IsStudio() then
-				warn(`"[LYNDONS-AC] You have been detected for exploiting. This incident has been logged."`)
+				warn(`"[LYNDONS-AC] - You have been detected for exploiting. This incident has been logged."`)
 				return;
 			end
 			
 			pcall(function()
-				service.UnWrap(p):Kick(`[LYNDONS-AC] You have been detected for exploiting. This incident has been logged.`)
+				service.UnWrap(p):Kick(`[LYNDONS-AC] - You have been detected for exploiting. This incident has been logged.`)
 			end)
 
 			task.wait(1)
