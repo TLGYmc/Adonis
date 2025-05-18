@@ -53,7 +53,7 @@ return function(Vargs, GetEnv)
 			Logs:AddLog("Script", `Attempted to add {ind} to legacy Remote.Unencrypted. Moving to Remote.Commands`)
 		end
 	})
-	server.Folder:SetSpecial("Shared", server.Shared)
+	--server.Folder:SetSpecial("Shared", server.Shared) --// server.Folder is not wrapped which is why we can't do this. TODO: Wrap server.Folder in Server.lua
 	Functions.GetRandom = function(pLen)
 		local random = math.random
 		local format = string.format
@@ -72,6 +72,17 @@ return function(Vargs, GetEnv)
 	for _, rank in {"Owners", "HeadAdmins", "Admins", "Moderators", "Creators"} do
 		if Settings[rank] and not Settings.CustomRanks[rank] then
 			Settings.Ranks[if rank == "Owners" then "HeadAdmins" else rank].Users = Settings[rank]
+		end
+	end
+	if Settings.CustomRanks then
+		local Ranks = Settings.Ranks
+		for name, users in Settings.CustomRanks do
+			if not Ranks[name] then
+				Ranks[name] = {
+					Level = 1;
+					Users = users;
+				}
+			end
 		end
 	end
 	for k, v in {-- Legacy aliases
