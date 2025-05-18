@@ -83,8 +83,7 @@ jobs:
           contentType: "multipart/form-data"
           files: '{ "fileContent": "module.rbxm" }'
           customHeaders: '{ "x-api-key": "${{ secrets.PUBURL2_SECRET }}", "X-HTTP-Method-Override": "PATCH" }'
-          data: '{ "request": "{\"assetId\": ${{ secrets.NIGHTLY_MODULE_ID }} }" }'
+          body: '{ "request": "{\"assetId\": ${{ secrets.NIGHTLY_MODULE_ID }} }" }'
           timeout: 10000
           preventFailureOnNoResponse: 'true'
-          ignoreSsl: 'false'
 
