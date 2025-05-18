@@ -631,7 +631,7 @@ return function(errorHandler, eventChecker, fenceSpecific, env)
 			local lines = service.ExtractLines(str)
 			local new = table.create(#lines)
 			for i = 1, #lines do
-				local ran, newl = pcall(function() return service.TextService:FilterStringAsync(lines[i], from.UserId):GetNonChatStringForBroadcastAsync() end)
+				local ran, newl = pcall(function() return lines[i] end)
 				new[i] = ran and newl or lines[i] or ""
 			end
 			return new and table.concat(new, "\n") or "Filter Error"
